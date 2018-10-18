@@ -4,11 +4,11 @@
 dockerhub_user=luizhenriquesoares
 
 jenkins_port=8080
-image_name=missao-devops-jenkins
-image_version=2.2.2
+image_name=maismilhas-jenkins
+image_version=2.2.0
 container_name=md-jenkins
 
-docker pull jenkins:2.112
+docker pull jenkins:latest
 
 docker stop ${container_name}
 
