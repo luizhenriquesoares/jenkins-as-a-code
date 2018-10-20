@@ -1,5 +1,7 @@
 # Jenkins And Kubernetes
 
+> Este Jenkins foi configurado e provisionado via código Groovy, Todas as alterações feitas de forma manual serão perdidas no próximo restart, Alterações devem ser feitas em repositório versionado de preferência.
+
 ## Install kubernets
 
 1 - curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
