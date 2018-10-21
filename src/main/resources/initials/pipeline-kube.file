@@ -1,21 +1,26 @@
 import javaposse.jobdsl.plugin.*
 
 node('kube') {
+    tools {nodejs "node"}
 
-    stage('Clone sources') {
-        git url: "https://github.com/jenkins-docs/simple-java-maven-app.git"
+    stage('Clone Git') {
+        steps {
+          git url: "https://github.com/sahat/hackathon-starter.git"
+        }
+
     }
-    withMaven(maven: 'maven3') {
-        stage('JUnit') {
-            sh "mvn clean test"
+
+    stage('Install dependencies') {
+        steps {
+            sh 'npm install'
+
         }
-        stage('Maven build') {
-            sh "mvn --batch-mode -U -e -Dmaven.test.skip=true install"
-        }
+      }
     }
     stage('Deployment') {
-        echo '>>> Chame aqui sua ferramenta de CD! <<<'
-        sh 'sleep 10'
-        echo '>>> SUCESSO <<<'
+        steps {
+           sh 'node app.js'
+        }
+
     }
 }
